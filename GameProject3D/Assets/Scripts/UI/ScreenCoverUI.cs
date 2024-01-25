@@ -1,0 +1,111 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+class ScreenCoverUI : BaseUI
+{
+    enum Control
+    {
+        /// <sammary>
+        /// ScreenCoverUI
+        /// </sammary>
+
+        // UIPosition
+
+        // Object
+        SampleUI_Object_TuchBlocking, SampleUI_Object_LoadingData,
+
+        // Button
+
+        // Image
+
+        // Text
+
+    }
+
+    public enum ScreenCoverType
+    {
+        TuchBlocking,
+        LoadingData,
+    }
+
+    protected override void BindControls()
+    {
+        base.BindControls();
+
+        // Control을 연결합니다.
+        BindControl<Control>();
+    }
+
+    // Event를 연결합니다.
+    protected override void BindEvents()
+    {
+        base.BindEvents();
+        //BindEventControl<Button>(Control., OnClick_);
+    }
+
+    // UIPanel을 생성할 때 초기화하는 함수입니다.
+    protected override void InitUI()
+    {
+        base.InitUI();
+    }
+
+    // Open할 때 실행할 프로세스입니다.
+    protected override void OpenUIProcess()
+    {
+        //yield return null;
+        
+        //
+        UpdateScreenCoverUI(ScreenCoverType.TuchBlocking);
+    }
+
+    // Close할 때 실행할 프로세스입니다.
+    protected override void CloseUIProcess()
+    {
+        //yield return null;
+
+        //
+    }
+
+    //private void Update()
+    //{
+    //}
+
+    #region Button
+
+    //void OnClick_()
+    //{
+    //    Debug.LogWarning("개발 진행 중 입니다.");
+    //}
+
+    #endregion Button
+
+    #region ScreenCoverUI
+    
+    public void SetScreeConverUI(ScreenCoverType _screenCoverType)
+    {
+        UpdateScreenCoverUI(_screenCoverType);
+    }
+
+    void UpdateScreenCoverUI(ScreenCoverType _screenCoverType)
+    {
+        SetActiveControl(Control.SampleUI_Object_TuchBlocking, _screenCoverType == ScreenCoverType.TuchBlocking);
+        SetActiveControl(Control.SampleUI_Object_LoadingData, _screenCoverType == ScreenCoverType.LoadingData);
+    }
+
+    #endregion ScreenCoverUI
+
+    #region SampleUI_Panel_
+
+    //void Open_SampleUI_Panel_()
+    //{
+    //    SetActiveControl(Control.SampleUI_Panel_, true);
+    //}
+
+    //void Close_SampleUI_Panel_()
+    //{
+    //    SetActiveControl(Control.SampleUI_Panel_, false);
+    //}
+
+    #endregion SampleUI_Panel_
+}
